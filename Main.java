@@ -22,10 +22,19 @@ public class Main {
         }
     }
 
-    
+    public static boolean isValidEmail(String email){
+        if(email.contains("@") && email.contains(".") && !email.contains(" ")) {
+            return true;
+        }
+        return false;
+    }
 
     public static void main(String[] args)
     {
+        verifiedBusinessNumbers.add("123456789");
+        verifiedBusinessNumbers.add("987654321");
+        verifiedBusinessNumbers.add("111222333");
+        
         JFrame frame = new JFrame();
         frame.setSize(600, 600);
         frame.setLayout(null);
@@ -78,10 +87,14 @@ public class Main {
                 return;
             }
             else{
-                if(verifiedBusinessNumbers.contains(businessNumberField.getText())) {
+                if(verifiedBusinessNumbers.contains(businessNumberField.getText()) && isValidEmail(contactEmailField.getText())) {
                     buttonText.setText("Business added successfully!");
                     Business newBusiness = new Main().new Business(nameField.getText(), businessNumberField.getText(), contactEmailField.getText(), descriptionField.getText());
                     businesses.add(newBusiness);
+                }
+                else if(!isValidEmail(contactEmailField.getText())) {
+                    buttonText.setText("Invalid email address. Please try again.");
+                    
                 }
                 else {
                     buttonText.setText("Invalid business number. Please try again.");
