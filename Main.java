@@ -45,7 +45,8 @@ public class Main {
         }
     }
 
-    //Binary search the sorted array for time complexity of O(log n)
+    //Binary search the sorted array to check for the valid buisness number
+    //Time complexity of O(log n), fast for millions of business numbers
     private static boolean checkNumber(String number) {
         int l = 0;
         int r = verifiedBusinessNumbers.length - 1;
@@ -88,6 +89,10 @@ public class Main {
         return false;
     }
 
+    //Main method to run the program with a simple Swing UI for the register form
+    //Uncomment the main method to run the program with UI
+
+    /* 
     public static void main(String[] args)
     {   
         //Heapsort has an average, worst, and best case time complexity of O(n log n) and a space complexity of O(1)
@@ -174,4 +179,5 @@ public class Main {
             }
         });
     }
+    */
 }
