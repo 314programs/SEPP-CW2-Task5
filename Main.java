@@ -1,7 +1,8 @@
 import javax.swing.*;
 
 public class Main {
-    static String[] verifiedBusinessNumbers = {"2","1","0","3","9","5","7","6","8","4"};
+    //Assume that verified business numbers are stored in this array and is updated beforehand
+    static String[] verifiedBusinessNumbers;
     static Business[] businesses = new Business[10];
     static int businessCount = 0;
 
@@ -47,7 +48,7 @@ public class Main {
 
     //Binary search the sorted array to check for the valid buisness number
     //Time complexity of O(log n), fast for millions of business numbers
-    private static boolean checkNumber(String number) {
+    private static boolean isValidBusinessNumber(String number) {
         int l = 0;
         int r = verifiedBusinessNumbers.length - 1;
 
@@ -92,6 +93,7 @@ public class Main {
     //Main method to run the program with a simple Swing UI for the register form
     //Uncomment the main method to run the program with UI
 
+
     /* 
     public static void main(String[] args)
     {   
@@ -99,9 +101,6 @@ public class Main {
         //Heapsort can also make it easy to add new business numbers to the array when needed
         //Sorting the verified business numbers to allow for binary search
         heapSort();
-        for(String number : verifiedBusinessNumbers) {
-            System.out.println(number);
-        }
 
         //Swing GUI for register form
         JFrame frame = new JFrame();
@@ -162,7 +161,7 @@ public class Main {
             else{
                 //Check if the business number is valid and if the email is valid. 
                 //If both are valid, add the business to the array and display a success message. 
-                if(checkNumber(businessNumberField.getText()) && isValidEmail(contactEmailField.getText())) {
+                if(isValidBusinessNumber(businessNumberField.getText()) && isValidEmail(contactEmailField.getText())) {
                     buttonText.setText("Business added successfully!");
                     Business newBusiness = new Main().new Business(nameField.getText(), businessNumberField.getText(), contactEmailField.getText(), descriptionField.getText());
                     businesses[businessCount] = newBusiness;
@@ -179,5 +178,6 @@ public class Main {
             }
         });
     }
-    */
+        */
+
 }
