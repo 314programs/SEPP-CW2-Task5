@@ -2,9 +2,9 @@ import javax.swing.*;
 
 public class Main {
     //Assume that verified business numbers are stored in this array and is updated beforehand
-    static String[] verifiedBusinessNumbers;
-    static Business[] businesses = new Business[10];
-    static int businessCount = 0;
+    public static String[] verifiedBusinessNumbers;
+    public static Business[] businesses;
+    public static int businessCount = 0;
 
     //Build max heap
     private static void heapify(String[] arr, int n, int i){
