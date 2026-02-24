@@ -7,6 +7,8 @@ public class Main {
     public static int businessCount = 0;
 
     //Build max heap
+    //Heap sort is chosen as in a future case where more verified business numbers are added -
+    //An insert heap method can be made with O(log n) time complexity to quickly add new business numbers to the array while keeping it sorted
     private static void heapify(String[] arr, int n, int i){
         int largest = i;
         //Left and right child indices
@@ -90,94 +92,11 @@ public class Main {
         return false;
     }
 
-    //Main method to run the program with a simple Swing UI for the register form
-    //Uncomment the main method to run the program with UI
-
-
-    /* 
-    public static void main(String[] args)
-    {   
-        //Heapsort has an average, worst, and best case time complexity of O(n log n) and a space complexity of O(1)
-        //Heapsort can also make it easy to add new business numbers to the array when needed
-        //Sorting the verified business numbers to allow for binary search
-        heapSort();
-
-        //Swing GUI for register form
-        JFrame frame = new JFrame();
-        frame.setSize(600, 600);
-        frame.setLayout(null);
-
-        //Each field has a label and a text field for user input
-        JLabel nameLabel = new JLabel("Name");
-        nameLabel.setBounds(50, 50, 100, 30);
-        frame.add(nameLabel);
-
-        JTextField nameField = new JTextField();
-        nameField.setBounds(50, 75, 300, 30);
-        frame.add(nameField);   
-
-        JLabel businessNumberLabel = new JLabel("Business Number");
-        businessNumberLabel.setBounds(50, 100, 150, 30);
-        frame.add(businessNumberLabel);
-
-        JTextField businessNumberField = new JTextField();
-        businessNumberField.setBounds(50, 125, 300, 30);
-        frame.add(businessNumberField);   
-
-        JLabel contactEmailLabel = new JLabel("Contact Email");
-        contactEmailLabel.setBounds(50, 150, 150, 30);
-        frame.add(contactEmailLabel);
-
-        JTextField contactEmailField = new JTextField();
-        contactEmailField.setBounds(50, 175, 300, 30);
-        frame.add(contactEmailField);
-
-        JLabel descriptionLabel = new JLabel("Description");
-        descriptionLabel.setBounds(50, 200, 100, 30);
-        frame.add(descriptionLabel);
-
-        JTextArea descriptionField = new JTextArea();
-        descriptionField.setBounds(50, 225, 300, 100);
-        frame.add(descriptionField);
-        
-        //A submit button for the form
-        JButton submitButton = new JButton("Submit");
-        submitButton.setBounds(50, 350, 100, 30);
-        frame.add(submitButton);
-
-        //A label to display messages to the user after submitting the form
-        JLabel buttonText = new JLabel();
-        buttonText.setBounds(50, 375, 300, 200);
-        frame.add(buttonText);
-
-        frame.setVisible(true);
-
-        submitButton.addActionListener(e -> {
-            //Some fields not filled
-            if(nameField.getText().isEmpty() || businessNumberField.getText().isEmpty() || contactEmailField.getText().isEmpty() || descriptionField.getText().isEmpty()) {
-                buttonText.setText("Please fill in all fields.");
-                return;
-            }
-            else{
-                //Check if the business number is valid and if the email is valid. 
-                //If both are valid, add the business to the array and display a success message. 
-                if(isValidBusinessNumber(businessNumberField.getText()) && isValidEmail(contactEmailField.getText())) {
-                    buttonText.setText("Business added successfully!");
-                    Business newBusiness = new Main().new Business(nameField.getText(), businessNumberField.getText(), contactEmailField.getText(), descriptionField.getText());
-                    businesses[businessCount] = newBusiness;
-                    businessCount++;
-                }
-                //Invalid email address or business number, display appropriate error message
-                else if(!isValidEmail(contactEmailField.getText())) {
-                    buttonText.setText("Invalid email address. Please try again.");
-                    
-                }
-                else {
-                    buttonText.setText("Invalid business number. Please try again.");
-                }
-            }
-        });
-    }
-        */
+    //To run the program assume that verified business numbers are stored in the array beforehand 
+    //Heapsort the verified business numbers
+    //For the business to be valid:
+    // all fields of Business class must be filled, 
+    // the business number must be in the verified business numbers array (use isValidBusinessNumber method), 
+    // and the email must be valid (use isValidEmail method)
 
 }
