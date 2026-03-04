@@ -50,7 +50,7 @@ public class Main {
 
     //Binary search the sorted array to check for the valid buisness number
     //Time complexity of O(log n), fast for millions of business numbers
-    private static boolean isValidBusinessNumber(String number) {
+    public static boolean isValidBusinessNumber(String number) {
         int l = 0;
         int r = verifiedBusinessNumbers.length - 1;
 
