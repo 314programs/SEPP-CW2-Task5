@@ -48,7 +48,7 @@ public class Main {
 
     //Binary search the sorted array to check for the valid buisness number
     //Time complexity of O(log n), fast for millions of business numbers
-    public static boolean isValidBusinessNumber(String number) {
+    private static boolean isValidBusinessNumber(String number) {
         int l = 0;
         int r = verifiedBusinessNumbers.length - 1;
 
@@ -68,21 +68,22 @@ public class Main {
     }
 
     //Store EP's register data using this class
+    //Class is implemented inside the code for simplicity, but will be made into a separate file in the full implementation
     public class EntertainmentProvider {
-        String name;
+        String organisationName;
         String businessNumber;
-        String contactEmail;
+        String mainContactEmail;
         String description;
 
-        public EntertainmentProvider(String name, String businessNumber, String contactEmail, String description) {
-            this.name = name;
+        public EntertainmentProvider(String organisationName, String businessNumber, String mainContactEmail, String description) {
+            this.organisationName = organisationName;
             this.businessNumber = businessNumber;
-            this.contactEmail = contactEmail;
+            this.mainContactEmail = mainContactEmail;
             this.description = description;
         }
     }
 
-    public static boolean isValidEmail(String email){
+    private static boolean isValidEmail(String email){
         //A rather simple email validation system that checks if "@" and "." are present with no spaces
         if(email.contains("@") && email.contains(".") && !email.contains(" ")) {
             return true;
@@ -90,11 +91,17 @@ public class Main {
         return false;
     }
 
+    public static boolean isValidBusiness(EntertainmentProvider business) {
+        if(business.organisationName != null && business.businessNumber != null && business.mainContactEmail != null && business.description != null) {
+            if(isValidBusinessNumber(business.businessNumber) && isValidEmail(business.mainContactEmail)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //To run the program assume that verified business numbers are stored in the array beforehand 
-    //Heapsort the verified business numbers
-    //For the business to be valid:
-    // all fields of Business class must be filled, 
-    // the business number must be in the verified business numbers array (use isValidBusinessNumber method), 
-    // and the email must be valid (use isValidEmail method)
+    //Heapsort the verified business numbers, take input for EntertainmentProvider
+    // Use isValidBusiness() to check if the business is valid and print the result
 
 }
