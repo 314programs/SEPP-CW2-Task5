@@ -1,9 +1,7 @@
-import javax.swing.*;
-
 public class Main {
     //Assume that verified business numbers are stored in this array and is updated beforehand
     public static String[] verifiedBusinessNumbers;
-    public static Business[] businesses;
+    public static EntertainmentProvider[] businesses;
     public static int businessCount = 0;
 
     //Build max heap
@@ -70,13 +68,13 @@ public class Main {
     }
 
     //Store EP's register data using this class
-    public class Business {
+    public class EntertainmentProvider {
         String name;
         String businessNumber;
         String contactEmail;
         String description;
 
-        public Business(String name, String businessNumber, String contactEmail, String description) {
+        public EntertainmentProvider(String name, String businessNumber, String contactEmail, String description) {
             this.name = name;
             this.businessNumber = businessNumber;
             this.contactEmail = contactEmail;
